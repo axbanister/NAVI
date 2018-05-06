@@ -111,6 +111,46 @@ del c:\manuf.txt
 pause
 goto reminfo
 
+:remNetinfo
+cls
+echo.
+set /p compname="Remote computer name?: "
+echo.
+echo Querying %compname% ...
+powershell.exe -ExecutionPolicy Bypass -command "Get-WmiObject -Class Win32_NetworkAdapterConfiguration -Filter IPEnabled=TRUE -ComputerName %compname% | Format-List -Property Description,IPAddress,MACAddress,DNSServerSearchOrder,DHCPServer
+echo Mapped Network Drives
+powershell -ExecutionPolicy Bypass -command "Get-Wmiobject Win32_MappedLogicalDisk -computername %compname% | select name,providername | FOrmat-Table -HideTableHeaders
+echo.
+wmic /node:"%compname%" computersystem get username
+pause
+goto reminfo
+
+:remPrograms
+cls
+echo.
+set /p compname="Remote computer name?: "
+echo.
+echo Querying %compname% ...
+echo.
+wmic /node:"%compname%" product get name,version | sort > c:\"%compname%".txt
+echo.
+echo Complete... Opening.
+c:\%compname%.txt
+pause
+echo.
+echo.
+CHOICE /M "Delete Output file?."
+if errorlevel == 2 goto reminfo
+if errorlevel == 1 goto remProgramsdel
+
+:remProgramsdel
+del c:\%compname%.txt
+echo.
+echo Deleted.
+echo.
+timeout /t 2 >nul
+goto reminfo
+
 :uninstall
 cls
 echo Opening control panel...
