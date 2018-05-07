@@ -1,3 +1,4 @@
+rem OBSOLETE
 @echo off
 cls
 :start
