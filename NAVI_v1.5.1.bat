@@ -3,6 +3,7 @@ cls
 :start
 cls
 echo.
+echo     Aaron B       Sam G      Martin G
 echo     ##    ##    ###    ##     ## ####
 echo     ###   ##   ## ##   ##     ##  ##
 echo     ####  ##  ##   ##  ##     ##  ##
@@ -170,7 +171,7 @@ echo.
 echo Navi installed successfully. Located c:\DATA\NAVI
 echo.
 echo Starting NAVI ...
-c:\pstools\psexec.exe -s -d \\%compname% -i c:\DATA\NAVI\navi.bat
+psexec.exe -s -d \\%compname% -i c:\DATA\NAVI\navi.bat
 echo.
 echo Navi started on %compname%.
 timeout /t 3 >nul
@@ -420,3 +421,10 @@ echo.
 echo     Made for the LKQ Helpdesk by Aaron B, Sam G, and Martin G.
 timeout /t 2 >nul
 exit
+
+
+
+
+
+
+
