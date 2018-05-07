@@ -162,7 +162,7 @@ cls
 echo Transferring NAVI to %compname% ...
 mkdir \\%compname%\c$\DATA\NAVI
 echo.
-xcopy c:\DATA\NAVI.bat \\%compname%\c$\DATA\NAVI
+xcopy c:\PretendFileShare\NAVI.bat \\%compname%\c$\DATA\NAVI
 echo.
 echo.
 echo Navi installed successfully. Located c:\DATA\NAVI
